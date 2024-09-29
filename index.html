@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+  <title>Arduino</title>
+ </head>
+ <body>
+  <div id="value">0</div>
+  <input id="slider" type="range" min="0" max="255" step="1" value="0" />
+  <script>
+   let socket = io('http://localhost:3000');
+   const value = document.getElementById('value');
+   socket.on('data', data => {
+    value.innerHTML = data;
+    document.getElementById('slider').value = parseInt(data);
+    console.log(data);
+   });
+   document.getElementById('slider').addEventListener('change', function () {
+    value.innerHTML = this.value;
+    socket.emit('webdata', this.value);
+   });
+  </script>
+ </body>
+</html>

@@ -1,0 +1,15 @@
+{
+ "name": "arduino",
+ "version": "1.0.0",
+ "description": "Communication between website and arduino",
+ "main": "app.js",
+ "scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1"
+ },
+ "author": "Rafał Jagielski",
+ "license": "ISC",
+ "dependencies": {
+  "serialport": "9.0.1",
+  "socket.io": "^4.2.0"
+ }
+}
